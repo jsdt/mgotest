@@ -11,7 +11,7 @@ import (
 	"text/template"
 	"time"
 
-	"gopkg.in/mgo.v2"
+	"github.com/globalsign/mgo"
 
 	"github.com/facebookgo/freeport"
 	"github.com/facebookgo/testname"
@@ -89,8 +89,8 @@ func (s *Server) Start(args ...string) {
 	}
 
 	waiter := waitout.New(mgoWaitingForConnections)
-    args = append(args, "--config", cf.Name(), "--setParameter", "enableTestCommands=1")
-    s.cmd = exec.Command("mongod", args...)
+	args = append(args, "--config", cf.Name(), "--setParameter", "enableTestCommands=1")
+	s.cmd = exec.Command("mongod", args...)
 	s.cmd.Env = envPlusLcAll()
 	if os.Getenv("MGOTEST_VERBOSE") == "1" {
 		s.cmd.Stdout = io.MultiWriter(os.Stdout, waiter)

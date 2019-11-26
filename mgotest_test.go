@@ -3,7 +3,7 @@ package mgotest_test
 import (
 	"testing"
 
-	"gopkg.in/mgo.v2/bson"
+	"github.com/globalsign/mgo/bson"
 
 	"github.com/facebookgo/mgotest"
 )
